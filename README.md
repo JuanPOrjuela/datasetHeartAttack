@@ -20,7 +20,7 @@ Este trabajo evalúa y predice el riesgo de ataque cardíaco (**`Heart Attack Ri
 3. **Distribución del Target (`Heart Attack Risk`)**:
    * **`0` (Bajo Riesgo / Sin Ataque)**: **5,624 pacientes (64.18%)**
    * **`1` (Alto Riesgo / Con Ataque)**: **3,139 pacientes (35.82%)**
-4. **Ingeniería de Características (*Feature Engineering*)**:
+4. **Características**:
    * Se separó la variable compuesta `Blood Pressure` (ej: `"158/88"`) en dos variables cuantitativas continuas: **`Systolic_BP`** (Presión Sistólica) y **`Diastolic_BP`** (Presión Diastólica).
 
 ---
