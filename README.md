@@ -1,6 +1,6 @@
 #  Predicción de Riesgo de Ataque al Corazón - Heart Attack Dataset
 
-Este proyecto evalúa y predice el riesgo de ataque cardíaco (**`Heart Attack Risk`**) utilizando el dataset `heart_attack_prediction_dataset.csv` de 8,763 pacientes.
+Este trabajo evalúa y predice el riesgo de ataque cardíaco (**`Heart Attack Risk`**) utilizando el dataset `heart_attack_prediction_dataset.csv` de los 8,763 pacientes basado en el ejercicio que hicimos durante clase, donde usamos tambien un 70-30 de train test.
 
 ---
 
