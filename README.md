@@ -25,13 +25,17 @@ Este trabajo evalúa y predice el riesgo de ataque cardíaco (**`Heart Attack Ri
 
 ---
 
-##  Evaluación de Modelos (Partición Train 70% / Test 30%)
+##  Evaluación de Modelos (Partición Train 70% / Test 30%, `class_weight='balanced'`)
 
-| Modelo de Machine Learning | Accuracy en Train (CV) | Accuracy en Test (30% - 2,629 muestras) | ROC-AUC |
+| Modelo de Machine Learning | Accuracy en Test | Recall clase 1 (en riesgo) | ROC-AUC |
 | :--- | :---: | :---: | :---: |
-|  **Regresión Logística** | **64.18%** | **64.17%** | **0.4966** |
-|  **Random Forest Regulado** | **64.18%** | **64.17%** | **0.5021** |
-|  **Árbol de Decisión (`max_depth=5`)** | **64.16%** | **63.52%** | **0.4903** |
+|  **Regresión Logística** | **49.60%** | **48%** | **0.4965** |
+|  **Random Forest Regulado** | **54.70%** | **39%** | **0.5152** |
+|  **Árbol de Decisión (`max_depth=5`)** | **54.32%** | **32%** | **0.4908** |
+
+>  **Bug corregido:** la versión anterior de este repo no usaba `class_weight='balanced'`. Con el target desbalanceado (64%/36%), los 3 modelos colapsaban a predecir *siempre* la clase 0 ("sin riesgo") — 0% de recall en la clase 1, es decir, el modelo nunca detectaba un paciente en riesgo sin importar sus datos. Eso explicaba la accuracy "buena" (64%) que en realidad solo eran modelos prediciendo la clase mayoritaria. Ya está corregido: el modelo balanceado en `heart_attack_model.joblib` ahora sí predice la clase 1 en una proporción razonable.
+>
+> **Limitación real del dataset (no corregible con código):** la correlación máxima entre cualquier feature clínica y `Heart Attack Risk` es 0.019 (prácticamente cero), y el ROC-AUC de los 3 modelos es ~0.49–0.52 — equivalente a azar. Este dataset de Kaggle en particular no parece tener una relación causal real entre las variables de salud y la etiqueta, por lo que ningún modelo entrenado sobre él va a predecir riesgo cardíaco de forma confiable. Ver la sección de limitaciones en el notebook para más detalle.
 
 ---
 
